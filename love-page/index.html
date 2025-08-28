@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>致我最爱的你</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@400;700&family=Zhi+Mang+Xing&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>给最亲爱的 格格</h1>
+            <p>一段为你而写的数字情诗</p>
+            <a href="#timeline" class="scroll-down">开启我们的故事 &darr;</a>
+        </div>
+    </header>
+
+    <section id="timeline" class="timeline-section">
+        <h2>我们的时光印记</h2>
+        <div class="timeline-container">
+            
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025年2月14日 - 初遇</h3>
+                    <p>始于那个雨夜的撑伞同行，心动于来福士顶楼栏杆边的对视。那一刻世界很静，我们的故事，自此开始。</p>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025年2月25日 - 相恋</h3>
+                    <p>你不言一语，但你明亮的眼眸里，我看到了最坚定的答案。从此，我的世界有了新的方向。</p>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025年4月15日 - 生日</h3>
+                    <p>屋顶餐厅的风，温柔拂过你的脸庞。我将一份小小的承诺挂在你的颈间，而你让它从此有了光芒。生日快乐，我的女孩。</p>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025年4月29日 - 同游</h3>
+                    <p>从过山车的呼啸尖叫，到灯光秀的静谧璀璨。最让我安心的，是你一直在我的身旁。</p>
+                </div>
+            </div>
+    
+            <div class="timeline-item">
+                <div class="timeline-content">
+                    <h3>2025年7月4日 - 再遇童话世界</h3>
+                    <p>第二次走进迪士尼，童话世界因你而真实和温暖，很高兴，能成为你的专属西兰花。</p>
+                </div>
+            </div>
+            
+        </div>
+    </section>
+
+    <section id="gallery" class="gallery-section">
+        <h2>珍藏的回忆</h2>
+        <div class="gallery-grid">
+            <img src="images/1.jpg" alt="我们的照片1" class="gallery-img">
+            <img src="images/2.jpg" alt="我们的照片2" class="gallery-img">
+            <img src="images/3.jpg" alt="我们的照片3" class="gallery-img">
+            <img src="images/4.jpg" alt="我们的照片4" class="gallery-img">
+        </div>
+    </section>
+    <div id="modal" class="modal">
+        <span class="close">&times;</span>
+        <img class="modal-content" id="modal-img">
+    </div>
+
+
+    <section id="star-reasons" class="reasons-section">
+        <h2>星河心事</h2>
+        <div class="star-container">
+            <canvas id="star-canvas"></canvas>
+        </div>
+        <div id="final-message" class="final-message"></div>
+        <div id="reason-modal" class="reason-modal">
+            <p id="reason-text-modal"></p>
+        </div>
+    </section>
+
+    <section id="letter" class="letter-section">
+        <h2>时光信笺</h2>
+        <div class="letter-content">
+            <div id="letter-text">
+                <p>亲爱的 王格格,</p>
+                <p>当我想起你时，感觉整个世界都温柔了起来。这个网页，记录了我们点点滴滴的美好。从相遇到相知，再到相爱，每一步都弥足珍贵。我想对你说，你是我生命中最明亮的光，未来的日子，愿我们继续携手，分享每一个日出与日落。</p>
+                <p class="signature">永远爱你的，<br>陈宇华</p>
+            </div>
+        </div>
+    </section>
+
+    <div class="music-player">
+        <audio id="bg-music" loop>
+            <source src="audio/The_Start.mp3" type="audio/mpeg">
+            你的浏览器不支持音频播放。
+        </audio>
+        <button id="play-pause-btn">播放音乐</button>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>

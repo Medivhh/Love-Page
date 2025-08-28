@@ -1,0 +1,339 @@
+/* 全局样式 */
+body {
+    font-family: 'Noto Serif SC', serif;
+    margin: 0;
+    color: #f0f0f0;
+    background-color: #0c0e1a;
+    scroll-behavior: smooth;
+}
+
+section {
+    padding: 60px 20px;
+    text-align: center;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    position: relative; /* 为星空背景做准备 */
+    overflow: hidden; /* 隐藏超出边界的星星 */
+}
+
+h2 {
+    font-size: 2.8em;
+    color: #ffd700;
+    margin-bottom: 40px;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.5);
+}
+
+/* 开场部分 */
+.hero {
+    height: 100vh;
+    background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url('images/starry-bg.jpg') no-repeat center center/cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.7);
+}
+
+.hero-content {
+    text-align: center;
+    animation: fadeIn 2s ease-in-out;
+    background: rgba(0, 0, 0, 0.3);
+    padding: 30px 50px;
+    border-radius: 15px;
+}
+
+.hero h1 {
+    font-size: 4em;
+    margin: 0;
+}
+
+.hero p {
+    font-size: 1.5em;
+    margin-top: 10px;
+}
+
+.scroll-down {
+    display: inline-block;
+    margin-top: 30px;
+    color: white;
+    text-decoration: none;
+    border: 2px solid white;
+    padding: 10px 20px;
+    border-radius: 20px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.scroll-down:hover {
+    background-color: white;
+    color: #1a1a2e;
+}
+
+/* 时间轴 */
+.timeline-section { background-color: transparent; }
+.timeline-container {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+}
+.timeline-container::after {
+    content: '';
+    position: absolute;
+    width: 3px;
+    background-color: #ffd700;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    margin-left: -1.5px;
+    z-index: 0;
+}
+.timeline-item {
+    padding: 10px 40px;
+    position: relative;
+    width: 50%;
+    box-sizing: border-box;
+}
+.timeline-item::after {
+    content: '';
+    position: absolute;
+    width: 20px;
+    height: 20px;
+    background-color: #0c0e1a;
+    border: 4px solid #ffd700;
+    top: 24px;
+    border-radius: 50%;
+    z-index: 1;
+}
+.timeline-item:nth-child(odd) { left: 0; }
+.timeline-item:nth-child(odd)::after { right: -14px; }
+.timeline-item:nth-child(even) { left: 50%; }
+.timeline-item:nth-child(even)::after { left: -14px; }
+.timeline-content {
+    padding: 20px 30px;
+    background-color: rgba(26, 26, 46, 0.7);
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    border: 1px solid rgba(255, 215, 0, 0.3);
+    color: #f0f0f0;
+    position: relative;
+    text-align: left;
+}
+
+/* 照片墙 */
+.gallery-section { background-color: transparent; }
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.gallery-img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: transform 0.3s, box-shadow 0.3s;
+    border: 2px solid rgba(255, 215, 0, 0.5);
+}
+.gallery-img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 16px rgba(255, 215, 0, 0.3);
+}
+
+/* 照片模态框 */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    padding-top: 50px;
+    left: 0; top: 0;
+    width: 100%; height: 100%;
+    background-color: rgba(0,0,0,0.9);
+}
+.modal-content {
+    margin: auto;
+    display: block;
+    max-width: 80%;
+    max-height: 80%;
+}
+.close {
+    position: absolute;
+    top: 15px; right: 35px;
+    color: #f1f1f1;
+    font-size: 40px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+/* --- “星河心事”  --- */
+.reasons-section {
+    min-height: 70vh; /* 给予足够的空间展示星空和寄语 */
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; /* 从顶部开始排列 */
+    align-items: center;
+    background-color: transparent;
+    padding-bottom: 100px; /* 为底部寄语留出空间 */
+}
+.star-container {
+    position: relative;
+    width: 100%;
+    max-width: 800px;
+    height: 400px;
+    margin-top: 20px; /* 标题和星星容器的间距 */
+}
+#star-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none; /* 让画布不影响星星的点击 */
+}
+.star {
+    position: absolute;
+    width: 8px;
+    height: 8px;
+    background-color: white;
+    border-radius: 50%;
+    cursor: pointer;
+    box-shadow: 0 0 10px white, 0 0 20px white;
+    transition: transform 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+    animation: twinkle 2s infinite ease-in-out alternate;
+    z-index: 10;
+}
+.star:hover {
+    transform: scale(2);
+    box-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;
+}
+@keyframes twinkle {
+    from { opacity: 0.5; }
+    to { opacity: 1; }
+}
+
+/* “星河心事”弹窗样式 */
+.reason-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.85);
+    z-index: 1001;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+}
+.reason-modal p {
+    color: #ffd700;
+    font-size: 2.5em;
+    text-shadow: 0 0 10px #ffd700;
+    padding: 20px;
+    text-align: center;
+    max-width: 80%;
+    animation: fadeInModal 0.5s ease-in-out;
+}
+@keyframes fadeInModal {
+    from { opacity: 0; transform: scale(0.9); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* 最终寄语样式 */
+.final-message {
+    margin-top: 40px;
+    color: #ffd700;
+    font-size: 1.8em; 
+    text-shadow: 0 0 10px #ffd700;
+    opacity: 0;
+    transition: opacity 1.5s ease-in-out;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    margin-left: auto;
+    margin-right: auto;
+}
+.final-message.visible {
+    opacity: 1;
+}
+
+
+/* --- “时光信笺” --- */
+.letter-section { background-color: transparent; }
+.letter-content {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: left;
+    background: rgba(245, 245, 220, 0.1);
+    padding: 50px;
+    border-radius: 5px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.5);
+    line-height: 2.5;
+    font-size: 1.2em;
+    border: 1px solid rgba(255, 215, 0, 0.4);
+    font-family: 'Zhi Mang Xing', cursive;
+}
+.letter-content p {
+    color: #f0f0f0;
+}
+#letter-text .cursor {
+    display: inline-block;
+    background-color: #ffd700;
+    width: 2px;
+    animation: blink 1s step-end infinite;
+}
+@keyframes blink {
+    from, to { background-color: transparent; }
+    50% { background-color: #ffd700; }
+}
+.signature {
+    text-align: right;
+    font-weight: bold;
+    margin-top: 30px;
+    color: #ffd700;
+}
+
+/* 音乐播放器 */
+.music-player {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 999;
+}
+#play-pause-btn {
+    background-color: #ffd700;
+    color: #1a1a2e;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 50px;
+    cursor: pointer;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+/* 动画效果 */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* 响应式设计 */
+@media (max-width: 768px) {
+    .hero h1 { font-size: 2.5em; }
+    .hero p { font-size: 1.2em; }
+    h2 { font-size: 2em; }
+    .timeline-container::after { left: 20px; }
+    .timeline-item { width: 100%; padding-left: 60px; padding-right: 15px; }
+    .timeline-item:nth-child(even) { left: 0; }
+    .timeline-item::after { left: 10px; }
+    .reason-modal p { font-size: 1.8em; }
+    .letter-content { padding: 30px; font-size: 1em; }
+    .final-message { font-size: 1.6em; }
+}
+
+/* 点亮星星时的样式 */
+.star.active {
+    box-shadow: 0 0 15px #ffd700, 0 0 30px #ffd700;
+    transform: scale(2);
+    animation: none;
+    cursor: default;
+}
